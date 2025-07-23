@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Alo Rico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffaf0;
+      padding: 1rem;
+      margin: 0;
+    }
+    h1 {
+      color: #c24600;
+      text-align: center;
+    }
+    .producto {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 8px;
+      max-width: 400px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .producto img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .precio {
+      color: #c24600;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Menú Alo Rico</h1>
+  <div id="productos"></div>
+
+  <script>
+    async function cargarPrecios() {
+      const response = await fetch("https://raw.githubusercontent.com/1967-ROB/Precio-Alo-rico/main/precios.json");
+      const data = await response.json();
+      const contenedor = document.getElementById("productos");
+
+      data.forEach(producto => {
+        const div = document.createElement("div");
+        div.className = "producto";
+        div.innerHTML = `
+          <img src="${producto.imagen}" alt="${producto.nombre}" />
+          <h2>${producto.nombre}</h2>
+          <p class="precio">Gs. ${producto.precio}</p>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
+
+    cargarPrecios();
+  </script>
+</body>
+</html>
