@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Menú Alo Rico</title>
   <style>
     body {
@@ -12,9 +12,19 @@
       margin: 0;
       padding: 0;
     }
-    h1 {
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px 0;
+    }
+    header img {
+      height: 50px;
+    }
+    header h1 {
       color: #c24a00;
-      margin-top: 20px;
+      margin: 0;
     }
     .menu-container {
       display: flex;
@@ -52,7 +62,11 @@
   </style>
 </head>
 <body>
-  <h1>Menú Alo Rico</h1>
+  <header>
+    <h1>Menú Alo Rico</h1>
+    <img src="logo.png" alt="Logo Alo Rico" />
+  </header>
+
   <div class="menu-container" id="menu"></div>
 
   <script>
@@ -65,11 +79,16 @@
         menu.innerHTML = '';
 
         Object.entries(productos).forEach(([nombre, info]) => {
+          const nombreNormalizado = nombre
+            .toLowerCase()
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, '-');
+
           const card = document.createElement('div');
           card.className = 'product';
 
           card.innerHTML = `
-            <img src="${info.imagen}" alt="${nombre}">
+            <img src="img/${nombreNormalizado}.jpg" alt="${nombre}">
             <h3>${nombre}</h3>
             <p>Gs. ${info.precio.toLocaleString()}</p>
           `;
