@@ -1,78 +1,97 @@
 {
   "Muzarella": {
     "precio": 35000,
-    "ingredientes": "Muzzarella, Jamón, salsa de tomate, pan hecho a mano casero"
+    "ingredientes": "Muzzarella, Jamón, salsa de tomate, pan hecho a mano casero",
+    "imagen": "imagen/muzarella.jpg"
   },
   "Choclo": {
     "precio": 40000,
-    "ingredientes": "Muzzarella, Choclo, salsa de tomate"
+    "ingredientes": "Muzzarella, Choclo, salsa de tomate",
+    "imagen": "imagen/choclo.jpg"
   },
   "Fugaza (cebolla caramelizada)": {
     "precio": 38000,
-    "ingredientes": "Cebolla caramelizada, muzzarella, salsa de tomate"
+    "ingredientes": "Cebolla caramelizada, muzzarella, salsa de tomate",
+    "imagen": "imagen/fugaza.jpg"
   },
   "Peperonni": {
     "precio": 45000,
-    "ingredientes": "Peperonni, muzzarella, salsa de tomate"
+    "ingredientes": "Peperonni, muzzarella, salsa de tomate",
+    "imagen": "imagen/peperonni.jpg"
   },
   "Jamón": {
     "precio": 42000,
-    "ingredientes": "Jamón, muzzarella, salsa de tomate"
+    "ingredientes": "Jamón, muzzarella, salsa de tomate",
+    "imagen": "imagen/jamon.jpg"
   },
   "Katupiry": {
     "precio": 44000,
-    "ingredientes": "Katupiry, muzzarella, salsa de tomate"
+    "ingredientes": "Katupiry, muzzarella, salsa de tomate",
+    "imagen": "imagen/katupiry.jpg"
   },
   "Pancho": {
     "precio": 42000,
-    "ingredientes": "Salchicha, muzzarella, salsa de tomate"
+    "ingredientes": "Salchicha, muzzarella, salsa de tomate",
+    "imagen": "imagen/pancho.jpg"
   },
   "Panceta": {
     "precio": 45000,
-    "ingredientes": "Panceta crocante, muzzarella, salsa de tomate"
+    "ingredientes": "Panceta crocante, muzzarella, salsa de tomate",
+    "imagen": "imagen/panceta.jpg"
   },
   "Napolitana (tomates, parmesano, perejil con ajo)": {
     "precio": 45000,
-    "ingredientes": "Muzzarella, tomate en rodajas, parmesano, ajo y perejil"
+    "ingredientes": "Muzzarella, tomate en rodajas, parmesano, ajo y perejil",
+    "imagen": "imagen/napolitana.jpg"
   },
   "Margarita (tomates y albahaca fresca)": {
     "precio": 42000,
-    "ingredientes": "Muzzarella, tomate, albahaca fresca"
+    "ingredientes": "Muzzarella, tomate, albahaca fresca",
+    "imagen": "imagen/margarita.jpg"
   },
   "Vegetariana (morrones, cebolla, tomates y choclo)": {
     "precio": 40000,
-    "ingredientes": "Morrones, cebolla, tomates, choclo, muzzarella"
+    "ingredientes": "Morrones, cebolla, tomates, choclo, muzzarella",
+    "imagen": "imagen/vegetariana.jpg"
   },
   "Traviesa (morrones, choclo, tomates y panceta crocante)": {
     "precio": 48000,
-    "ingredientes": "Morrones, choclo, tomates, panceta crocante, muzzarella"
+    "ingredientes": "Morrones, choclo, tomates, panceta crocante, muzzarella",
+    "imagen": "imagen/traviesa.jpg"
   },
   "Choripizza (trozos de chorizo, cebolla, aceitunas)": {
     "precio": 50000,
-    "ingredientes": "Chorizo, cebolla, aceitunas negras, muzzarella"
+    "ingredientes": "Chorizo, cebolla, aceitunas negras, muzzarella",
+    "imagen": "imagen/choripizza.jpg"
   },
   "Panceta con queso Cheddar": {
     "precio": 48000,
-    "ingredientes": "Panceta, queso cheddar, muzzarella"
+    "ingredientes": "Panceta, queso cheddar, muzzarella",
+    "imagen": "imagen/pancetaconquesoCheddar.jpg"
   },
   "Alekei (pollo, katupiry, verduras)": {
     "precio": 54000,
-    "ingredientes": "Pollo, katupiry, morrón, cebolla, tomate"
+    "ingredientes": "Pollo, katupiry, morrón, cebolla, tomate",
+    "imagen": "imagen/alekei.jpg"
   },
   "4 Quesos (muza, azul, katupiry y queso paraguay)": {
     "precio": 52000,
-    "ingredientes": "Muzzarella, queso azul, katupiry, queso Paraguay"
+    "ingredientes": "Muzzarella, queso azul, katupiry, queso Paraguay",
+    "imagen": "imagen/4quesos.jpg"
   },
   "Mexicana (carne de lomito, cebolla, morrones, tomate y picante)": {
     "precio": 60000,
-    "ingredientes": "Carne de lomito, cebolla, morrones, tomate, picante"
+    "ingredientes": "Carne de lomito, cebolla, morrones, tomate, picante",
+    "imagen": "imagen/mexicana.jpg"
   },
   "Encantada (choclo, katupiry y papas fritas)": {
     "precio": 52000,
-    "ingredientes": "Choclo, katupiry, papas fritas, muzzarella"
+    "ingredientes": "Choclo, katupiry, papas fritas, muzzarella",
+    "imagen": "imagen/encantada.jpg"
   },
   "Alorico ité (carnes, verduras y panceta)": {
     "precio": 85000,
-    "ingredientes": "Carnes mixtas, verduras salteadas, panceta crocante, muzzarella"
+    "ingredientes": "Carnes mixtas, verduras salteadas, panceta crocante, muzzarella",
+    "imagen": "imagen/aloricoite.jpg"
   }
 }
