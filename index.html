@@ -13,18 +13,21 @@
       padding: 0;
     }
     header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px 0;
+      margin-top: 20px;
     }
-    header img {
-      height: 50px;
+    header img.logo {
+      width: 120px;
+      height: auto;
     }
     header h1 {
+      font-size: 28px;
       color: #c24a00;
-      margin: 0;
+      margin: 10px 0 5px;
+    }
+    header img.icono {
+      width: 60px;
+      height: auto;
+      margin-bottom: 10px;
     }
     .menu-container {
       display: flex;
@@ -63,8 +66,9 @@
 </head>
 <body>
   <header>
-    <h1>Menú Alo Rico</h1>
-    <img src="logo.png" alt="Logo Alo Rico" />
+    <img src="logo.png" alt="Logo Alo Rico" class="logo" />
+    <h1>Menú de Pizzas</h1>
+    <img src="repartidor.png" alt="Repartidor con pizza" class="icono" />
   </header>
 
   <div class="menu-container" id="menu"></div>
