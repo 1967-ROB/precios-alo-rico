@@ -36,6 +36,8 @@
     }
     .product img {
       width: 100%;
+      height: 140px;
+      object-fit: cover;
       border-radius: 10px 10px 0 0;
     }
     .product h3 {
@@ -54,37 +56,43 @@
   <div class="menu-container" id="menu"></div>
 
   <script>
-    const productos = [
-      {
-        "nombre": "Pizza Muzzarella",
-        "precio": 25000,
-        "imagen": "https://raw.githubusercontent.com/1967-ROB/Precios-alo-rico/main/img/muzzarella.jpg",
-        "ingredientes": "Muzzarella, Jamón, salsa de tomate, pan hecho a mano casero"
-      },
-      {
-        "nombre": "Pizza Napolitana",
-        "precio": 28000,
-        "imagen":"https://raw.githubusercontent.com/1967-ROB/Precios-alo-rico/main/img/napolitana.jpg",
-    "ingredientes": "Muzzarella, Jamón, salsa de tomate, tomate, locote, pan hecho a mano casero"
+    async function cargarMenu() {
+      try {
+        const res = await fetch("https://raw.githubusercontent.com/1967-ROB/Precios-alo-rico/main/precios.json");
+        const productos = await res.json();
+
+        const menu = document.getElementById('menu');
+        menu.innerHTML = '';
+
+        Object.entries(productos).forEach(([nombre, info]) => {
+          const nombreNormalizado = nombre
+            .toLowerCase()
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, '-');
+
+          const card = document.createElement('div');
+          card.className = 'product';
+
+          card.innerHTML = `
+            <img src="img/${nombreNormalizado}.jpg" alt="${nombre}">
+            <h3>${nombre}</h3>
+            <p>Gs. ${info.precio.toLocaleString()}</p>
+          `;
+
+          card.addEventListener('click', () => {
+            alert(`${nombre}\n\nIngredientes:\n${info.ingredientes}`);
+          });
+
+          menu.appendChild(card);
+        });
+
+      } catch (error) {
+        document.getElementById('menu').innerHTML = "<p style='color:red;'>No se pudo cargar el menú</p>";
+        console.error(error);
       }
-      // Agregar más productos según el JSON real
-    ];
+    }
 
-    const menu = document.getElementById('menu');
-
-    productos.forEach(producto => {
-      const card = document.createElement('div');
-      card.className = 'product';
-      card.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}">
-        <h3>${producto.nombre}</h3>
-        <p>Gs. ${producto.precio.toLocaleString()}</p>
-      `;
-      card.addEventListener('click', () => {
-        alert(`${producto.nombre}\n\nIngredientes:\n${producto.ingredientes}`);
-      });
-      menu.appendChild(card);
-    });
+    cargarMenu();
   </script>
 </body>
 </html>
