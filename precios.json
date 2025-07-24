@@ -1,15 +1,51 @@
 {
-  "Katupiry": {
+  "Alorico ité (carnes, verduras y panceta)": {
     "categoria": "pizza",
-    "precio": 44000,
-    "ingredientes": "Katupiry, muzzarella, salsa de tomate",
-    "imagen": "katupiry.jpg"
+    "precio": 85000,
+    "ingredientes": "Carnes mixtas, verduras salteadas, panceta crocante, muzzarella",
+    "imagen": "aloricoite.jpg"
   },
-  "Pancho": {
+  "Mexicana (carne de lomito, cebolla, morrones, tomate y picante)": {
     "categoria": "pizza",
-    "precio": 42000,
-    "ingredientes": "Salchicha, muzzarella, salsa de tomate",
-    "imagen": "pancho.jpg"
+    "precio": 60000,
+    "ingredientes": "Carne de lomito, cebolla, morrones, tomate, picante, muzzarella",
+    "imagen": "mexicana.jpg"
+  },
+  "Alekei (pollo, katupiry, verduras)": {
+    "categoria": "pizza",
+    "precio": 54000,
+    "ingredientes": "Pollo, katupiry, morrón, cebolla, tomate, muzzarella",
+    "imagen": "alekei.jpg"
+  },
+  "Encantada (choclo, katupiry y papas fritas)": {
+    "categoria": "pizza",
+    "precio": 52000,
+    "ingredientes": "Choclo, katupiry, papas fritas, muzzarella",
+    "imagen": "encantada.jpg"
+  },
+  "4 Quesos (muza, azul, katupiry y queso paraguay)": {
+    "categoria": "pizza",
+    "precio": 52000,
+    "ingredientes": "Muzzarella, queso azul, katupiry, queso Paraguay",
+    "imagen": "4quesos.jpg"
+  },
+  "Choripizza (trozos de chorizo, cebolla, aceitunas)": {
+    "categoria": "pizza",
+    "precio": 50000,
+    "ingredientes": "Chorizo, cebolla, aceitunas negras, muzzarella",
+    "imagen": "choripizza.jpg"
+  },
+  "Traviesa (morrones, choclo, tomates y panceta crocante)": {
+    "categoria": "pizza",
+    "precio": 48000,
+    "ingredientes": "Morrones, choclo, tomates, panceta crocante, muzzarella",
+    "imagen": "traviesa.jpg"
+  },
+  "Panceta con queso Cheddar": {
+    "categoria": "pizza",
+    "precio": 48000,
+    "ingredientes": "Panceta, queso cheddar, muzzarella",
+    "imagen": "pancetaconquesoCheddar.jpg"
   },
   "Panceta": {
     "categoria": "pizza",
@@ -23,64 +59,35 @@
     "ingredientes": "Muzzarella, tomate en rodajas, parmesano, ajo y perejil",
     "imagen": "napolitana.jpg"
   },
+  "Katupiry": {
+    "categoria": "pizza",
+    "precio": 44000,
+    "ingredientes": "Katupiry, muzzarella, salsa de tomate",
+    "imagen": "katupiry.jpg"
+  },
+  "Muzzarella": {
+    "categoria": "pizza",
+    "precio": 35000,
+    "ingredientes": "Muzzarella, salsa de tomate",
+    "imagen": "muzzarella.jpg"
+  },
   "Margarita (tomates y albahaca fresca)": {
     "categoria": "pizza",
     "precio": 42000,
     "ingredientes": "Muzzarella, tomate, albahaca fresca",
     "imagen": "margarita.jpg"
   },
+  "Pancho": {
+    "categoria": "pizza",
+    "precio": 42000,
+    "ingredientes": "Salchicha, muzzarella, salsa de tomate",
+    "imagen": "pancho.jpg"
+  },
   "Vegetariana (morrones, cebolla, tomates y choclo)": {
     "categoria": "pizza",
     "precio": 40000,
     "ingredientes": "Morrones, cebolla, tomates, choclo, muzzarella",
     "imagen": "vegetariana.jpg"
-  },
-  "Traviesa (morrones, choclo, tomates y panceta crocante)": {
-    "categoria": "pizza",
-    "precio": 48000,
-    "ingredientes": "Morrones, choclo, tomates, panceta crocante, muzzarella",
-    "imagen": "traviesa.jpg"
-  },
-  "Choripizza (trozos de chorizo, cebolla, aceitunas)": {
-    "categoria": "pizza",
-    "precio": 50000,
-    "ingredientes": "Chorizo, cebolla, aceitunas negras, muzzarella",
-    "imagen": "choripizza.jpg"
-  },
-  "Panceta con queso Cheddar": {
-    "categoria": "pizza",
-    "precio": 48000,
-    "ingredientes": "Panceta, queso cheddar, muzzarella",
-    "imagen": "pancetaconquesoCheddar.jpg"
-  },
-  "Alekei (pollo, katupiry, verduras)": {
-    "categoria": "pizza",
-    "precio": 54000,
-    "ingredientes": "Pollo, katupiry, morrón, cebolla, tomate",
-    "imagen": "alekei.jpg"
-  },
-  "4 Quesos (muza, azul, katupiry y queso paraguay)": {
-    "categoria": "pizza",
-    "precio": 52000,
-    "ingredientes": "Muzzarella, queso azul, katupiry, queso Paraguay",
-    "imagen": "4quesos.jpg"
-  },
-  "Mexicana (carne de lomito, cebolla, morrones, tomate y picante)": {
-    "categoria": "pizza",
-    "precio": 60000,
-    "ingredientes": "Carne de lomito, cebolla, morrones, tomate, picante",
-    "imagen": "mexicana.jpg"
-  },
-  "Encantada (choclo, katupiry y papas fritas)": {
-    "categoria": "pizza",
-    "precio": 52000,
-    "ingredientes": "Choclo, katupiry, papas fritas, muzzarella",
-    "imagen": "encantada.jpg"
-  },
-  "Alorico ité (carnes, verduras y panceta)": {
-    "categoria": "pizza",
-    "precio": 85000,
-    "ingredientes": "Carnes mixtas, verduras salteadas, panceta crocante, muzzarella",
-    "imagen": "aloricoite.jpg"
   }
 }
+
