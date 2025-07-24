@@ -2,26 +2,20 @@
   "Alorico ité (carnes, verduras y panceta)": {
     "categoria": "pizza",
     "precio": 85000,
-    "ingredientes": "Carnes mixtas, verduras salteadas, panceta crocante, muzzarella",
+    "ingredientes": "Carnes, verduras y panceta",
     "imagen": "aloricoite.jpg"
   },
   "Mexicana (carne de lomito, cebolla, morrones, tomate y picante)": {
     "categoria": "pizza",
     "precio": 60000,
-    "ingredientes": "Carne de lomito, cebolla, morrones, tomate, picante, muzzarella",
+    "ingredientes": "Cebollas, morrones, tomates, carne de lomitos a la plancha, picante, aceitunas negras, muzzarella",
     "imagen": "mexicana.jpg"
   },
   "Alekei (pollo, katupiry, verduras)": {
     "categoria": "pizza",
     "precio": 54000,
-    "ingredientes": "Pollo, katupiry, morrón, cebolla, tomate, muzzarella",
+    "ingredientes": "Pollo, katupiry, verduras, muzzarella",
     "imagen": "alekei.jpg"
-  },
-  "Encantada (choclo, katupiry y papas fritas)": {
-    "categoria": "pizza",
-    "precio": 52000,
-    "ingredientes": "Choclo, katupiry, papas fritas, muzzarella",
-    "imagen": "encantada.jpg"
   },
   "4 Quesos (muza, azul, katupiry y queso paraguay)": {
     "categoria": "pizza",
@@ -29,23 +23,41 @@
     "ingredientes": "Muzzarella, queso azul, katupiry, queso Paraguay",
     "imagen": "4quesos.jpg"
   },
+  "Encantada (choclo, katupiry y papas fritas)": {
+    "categoria": "pizza",
+    "precio": 52000,
+    "ingredientes": "Choclo, katupiry, papas fritas, muzzarella",
+    "imagen": "encantada.jpg"
+  },
   "Choripizza (trozos de chorizo, cebolla, aceitunas)": {
     "categoria": "pizza",
     "precio": 50000,
-    "ingredientes": "Chorizo, cebolla, aceitunas negras, muzzarella",
+    "ingredientes": "Trozos de chorizo con cebolla a la plancha, aceitunas negras, muzzarella",
     "imagen": "choripizza.jpg"
   },
   "Traviesa (morrones, choclo, tomates y panceta crocante)": {
     "categoria": "pizza",
     "precio": 48000,
-    "ingredientes": "Morrones, choclo, tomates, panceta crocante, muzzarella",
+    "ingredientes": "Morrones con cebolla a la plancha, choclo, tomates en rodajas, panceta crocante, muzzarella",
     "imagen": "traviesa.jpg"
   },
   "Panceta con queso Cheddar": {
     "categoria": "pizza",
     "precio": 48000,
-    "ingredientes": "Panceta, queso cheddar, muzzarella",
+    "ingredientes": "Panceta crocante y queso cheddar, muzzarella",
     "imagen": "pancetaconquesoCheddar.jpg"
+  },
+  "Peperonni": {
+    "categoria": "pizza",
+    "precio": 45000,
+    "ingredientes": "Peperonni y muzzarella",
+    "imagen": "peperonni.jpg"
+  },
+  "Napolitana (tomates, parmesano, perejil con ajo)": {
+    "categoria": "pizza",
+    "precio": 45000,
+    "ingredientes": "Tomates en rodajas, queso parmesano, perejil con ajo, muzzarella",
+    "imagen": "napolitana.jpg"
   },
   "Panceta": {
     "categoria": "pizza",
@@ -53,28 +65,22 @@
     "ingredientes": "Panceta crocante, muzzarella, salsa de tomate",
     "imagen": "panceta.jpg"
   },
-  "Napolitana (tomates, parmesano, perejil con ajo)": {
-    "categoria": "pizza",
-    "precio": 45000,
-    "ingredientes": "Muzzarella, tomate en rodajas, parmesano, ajo y perejil",
-    "imagen": "napolitana.jpg"
-  },
   "Katupiry": {
     "categoria": "pizza",
     "precio": 44000,
     "ingredientes": "Katupiry, muzzarella, salsa de tomate",
     "imagen": "katupiry.jpg"
   },
-  "Muzzarella": {
+  "Jamón": {
     "categoria": "pizza",
-    "precio": 35000,
-    "ingredientes": "Muzzarella, salsa de tomate",
-    "imagen": "muzzarella.jpg"
+    "precio": 42000,
+    "ingredientes": "Jamón y muzzarella",
+    "imagen": "jamon.jpg"
   },
   "Margarita (tomates y albahaca fresca)": {
     "categoria": "pizza",
     "precio": 42000,
-    "ingredientes": "Muzzarella, tomate, albahaca fresca",
+    "ingredientes": "Tomates en rodajas, albahaca fresca, muzzarella",
     "imagen": "margarita.jpg"
   },
   "Pancho": {
@@ -86,8 +92,25 @@
   "Vegetariana (morrones, cebolla, tomates y choclo)": {
     "categoria": "pizza",
     "precio": 40000,
-    "ingredientes": "Morrones, cebolla, tomates, choclo, muzzarella",
+    "ingredientes": "Morrones y cebolla a la plancha, con tomates en rodajas y choclo, muzzarella",
     "imagen": "vegetariana.jpg"
+  },
+  "Choclo": {
+    "categoria": "pizza",
+    "precio": 40000,
+    "ingredientes": "Choclo y muzzarella",
+    "imagen": "choclo.jpg"
+  },
+  "Fugaza (cebolla caramelizada)": {
+    "categoria": "pizza",
+    "precio": 38000,
+    "ingredientes": "Cebolla caramelizada, muzzarella",
+    "imagen": "fugaza.jpg"
+  },
+  "Muzzarella": {
+    "categoria": "pizza",
+    "precio": 35000,
+    "ingredientes": "Muzzarella y salsa de tomate",
+    "imagen": "muzzarella.jpg"
   }
 }
-
