@@ -109,27 +109,39 @@
       <h2 id="modal-titulo"></h2>
       <p id="modal-ingredientes"></p>
       <div class="modal-buttons">
-        <button class="entera">Agregar Entera</button>
-        <button class="mitad">Agregar Mitad</button>
-        <button class="cancelar">Cancelar</button>
+        <button id="btn-entera" class="entera">Agregar Entera</button>
+        <button id="btn-mitad" class="mitad">Agregar Mitad</button>
+        <button id="btn-cancelar" class="cancelar">Cancelar</button>
       </div>
     </div>
   </div>
 
   <script>
-    async function cargarMenu() {
+    document.addEventListener('DOMContentLoaded', async () => {
+      const modal = document.getElementById('modal');
+      const modalTitulo = document.getElementById('modal-titulo');
+      const modalIngredientes = document.getElementById('modal-ingredientes');
+
+      const btnEntera = document.getElementById('btn-entera');
+      const btnMitad = document.getElementById('btn-mitad');
+      const btnCancelar = document.getElementById('btn-cancelar');
+
+      btnCancelar.onclick = () => modal.style.display = 'none';
+      btnEntera.onclick = () => {
+        alert(`✅ Pizza entera agregada: ${modalTitulo.textContent}`);
+        modal.style.display = 'none';
+      };
+      btnMitad.onclick = () => {
+        alert(`🧩 Mitad agregada: ${modalTitulo.textContent}`);
+        modal.style.display = 'none';
+      };
+
       try {
         const res = await fetch("https://raw.githubusercontent.com/1967-ROB/Precios-alo-rico/main/precios.json");
         const productos = await res.json();
 
         const menu = document.getElementById('menu');
         menu.innerHTML = '';
-
-        const modal = document.getElementById('modal');
-        const modalTitulo = document.getElementById('modal-titulo');
-        const modalIngredientes = document.getElementById('modal-ingredientes');
-
-        document.querySelector('.cancelar').onclick = () => modal.style.display = 'none';
 
         Object.entries(productos).forEach(([nombre, info]) => {
           const card = document.createElement('div');
@@ -154,9 +166,7 @@
         document.getElementById('menu').innerHTML = "<p style='color:red;'>No se pudo cargar el menú</p>";
         console.error(error);
       }
-    }
-
-    cargarMenu();
+    });
   </script>
 </body>
 </html>
