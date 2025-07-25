@@ -83,16 +83,11 @@
         menu.innerHTML = '';
 
         Object.entries(productos).forEach(([nombre, info]) => {
-          const nombreNormalizado = nombre
-            .toLowerCase()
-            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-            .replace(/\s+/g, '-');
-
           const card = document.createElement('div');
           card.className = 'product';
 
           card.innerHTML = `
-           <img src="img/${info.imagen}" alt="${nombre}">
+            <img src="${info.imagen}" alt="${nombre}">
             <h3>${nombre}</h3>
             <p>Gs. ${info.precio.toLocaleString()}</p>
           `;
