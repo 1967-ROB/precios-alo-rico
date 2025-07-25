@@ -1,15 +1,15 @@
 {
-  "Mexicana (carne de lomito, cebolla, morrones, tomate y picante)": {
+  "Mexicana": {
     "precio": 60000,
     "ingredientes": "Carne de lomito, cebolla, morrones, tomate, picante",
     "imagen": "img-pizza/mexicana.jpeg"
   },
-  "Alekei (pollo, katupiry, verduras)": {
+  "Alekei ": {
     "precio": 54000,
     "ingredientes": "Pollo, katupiry, morrón, cebolla, tomate",
     "imagen": "img-pizza/alekei.jpeg"
   },
-  "Traviesa (morrones, choclo, tomates y panceta crocante)": {
+  "Traviesa": {
     "precio": 48000,
     "ingredientes": "Morrones, choclo, tomates, panceta crocante, muzzarella",
     "imagen": "img-pizza/traviesa.jpeg"
@@ -24,7 +24,7 @@
     "ingredientes": "Jamón, muzzarella, salsa de tomate",
     "imagen": "img-pizza/jamon.jpeg"
   },
-  "Margarita (tomates y albahaca fresca)": {
+  "Margarita": {
     "precio": 42000,
     "ingredientes": "Muzzarella, tomate, albahaca fresca",
     "imagen": "img-pizza/margarita.jpeg"
@@ -34,7 +34,7 @@
     "ingredientes": "Salchicha, muzzarella, salsa de tomate",
     "imagen": "img-pizza/pancho.jpeg"
   },
-  "Choripizza (trozos de chorizo, cebolla, aceitunas)": {
+  "Choripizza": {
     "precio": 40000,
     "ingredientes": "Chorizo, cebolla, aceitunas negras, muzzarella",
     "imagen": "img-pizza/chori.jpeg"
