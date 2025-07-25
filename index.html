@@ -8,12 +8,12 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #fefaf0;
+      text-align: center;
       margin: 0;
-      padding-bottom: 180px;
+      padding: 0;
     }
     header {
       margin-top: 20px;
-      text-align: center;
     }
     header img.logo {
       width: 120px;
@@ -90,46 +90,43 @@
     .entera { background-color: #c24a00; color: white; }
     .mitad { background-color: #ff8c00; color: white; }
     .cancelar { background-color: #ccc; color: black; }
-
-    #pedido {
+    #pedido-flotante {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
       background: #fff;
-      border-top: 2px solid #ccc;
-      padding: 15px;
+      border-top: 2px solid #c24a00;
       box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-      text-align: left;
       z-index: 1000;
+      padding: 10px;
+      text-align: left;
     }
-    #pedido h2 { margin: 0 0 10px; font-size: 18px; text-align: center; }
-    #lista-pedido {
-      max-height: 100px;
-      overflow-y: auto;
-      margin: 10px 0;
+    #pedido-flotante h3 {
+      margin: 5px 0;
+    }
+    #pedido-flotante ul {
+      margin: 0;
       padding-left: 20px;
     }
-    #pedido button {
-      background-color: green;
-      color: white;
-      padding: 10px 15px;
+    #pedido-flotante button {
+      margin-top: 5px;
+      margin-right: 5px;
+      padding: 6px 12px;
+      font-size: 14px;
       border: none;
-      border-radius: 5px;
+      border-radius: 4px;
       cursor: pointer;
-      margin-top: 10px;
-      margin-right: 10px;
     }
-    .btn-borrar {
-      background-color: crimson;
-    }
+    .borrar { background-color: red; color: white; }
+    .whatsapp { background-color: green; color: white; }
   </style>
 </head>
 <body>
   <header>
     <img src="logo.png" alt="Logo Alo Rico" class="logo" />
     <h1>Menú de Pizzas</h1>
-    <img src="Repartidor.png" alt="Repartidor" class="icono" />
+    <img src="Repartidor.png" alt="" class="icono" />
   </header>
 
   <div class="menu-container" id="menu"></div>
@@ -137,7 +134,6 @@
   <div id="modal" class="modal">
     <div class="modal-content">
       <h2 id="modal-titulo"></h2>
-      <p id="modal-ingredientes"></p>
       <div class="modal-buttons">
         <button id="btn-entera" class="entera">Agregar Entera</button>
         <button id="btn-mitad" class="mitad">Agregar Mitad</button>
@@ -146,66 +142,85 @@
     </div>
   </div>
 
-  <div id="pedido">
-    <h2>Mi Pedido</h2>
+  <div id="pedido-flotante">
+    <h3>Mi Pedido</h3>
     <ul id="lista-pedido"></ul>
     <p id="total-pedido"></p>
-    <button id="enviar-whatsapp">Enviar por WhatsApp</button>
-    <button id="borrar-pedido" class="btn-borrar">Borrar todo</button>
+    <button class="borrar" id="btn-borrar">Borrar todo</button>
+    <button class="whatsapp" id="enviar-whatsapp">Enviar pedido</button>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       const modal = document.getElementById('modal');
       const modalTitulo = document.getElementById('modal-titulo');
-      const modalIngredientes = document.getElementById('modal-ingredientes');
       const btnEntera = document.getElementById('btn-entera');
       const btnMitad = document.getElementById('btn-mitad');
       const btnCancelar = document.getElementById('btn-cancelar');
       const listaPedido = document.getElementById('lista-pedido');
       const totalPedido = document.getElementById('total-pedido');
+      const btnBorrar = document.getElementById('btn-borrar');
       const btnWhatsapp = document.getElementById('enviar-whatsapp');
-      const btnBorrar = document.getElementById('borrar-pedido');
 
       let productosGlobal = {};
       let pedido = [];
+      let mitadPendiente = null;
 
-      btnCancelar.onclick = () => modal.style.display = 'none';
-      btnEntera.onclick = () => agregarAlPedido('entera');
-      btnMitad.onclick = () => agregarAlPedido('mitad');
+      btnCancelar.onclick = () => {
+        modal.style.display = 'none';
+        mitadPendiente = null;
+      };
+
+      btnEntera.onclick = () => {
+        const nombre = modalTitulo.textContent;
+        const precio = productosGlobal[nombre].precio;
+        pedido.push({ nombre, tipo: 'Entera', precio });
+        actualizarPedido();
+        modal.style.display = 'none';
+      };
+
+      btnMitad.onclick = () => {
+        const nombre = modalTitulo.textContent;
+        const precio = productosGlobal[nombre].precio;
+        if (!mitadPendiente) {
+          mitadPendiente = { nombre, precio };
+          modal.style.display = 'none';
+          alert('Seleccioná ahora la segunda mitad');
+        } else {
+          const nombre1 = mitadPendiente.nombre;
+          const nombre2 = nombre;
+          const precioFinal = Math.max(mitadPendiente.precio, precio);
+          pedido.push({ nombre: `Mitad ${nombre1} + Mitad ${nombre2}`, tipo: 'Mitad y Mitad', precio: precioFinal });
+          mitadPendiente = null;
+          actualizarPedido();
+          modal.style.display = 'none';
+        }
+      };
+
       btnBorrar.onclick = () => {
         pedido = [];
+        mitadPendiente = null;
         actualizarPedido();
       };
 
-      function agregarAlPedido(tipo) {
-        const nombre = modalTitulo.textContent;
-        const info = productosGlobal[nombre];
-        let precio = info.precio;
-        if (tipo === 'mitad') precio = Math.round(precio / 2);
-        pedido.push({ nombre, tipo, precio });
-        actualizarPedido();
-        modal.style.display = 'none';
-      }
+      btnWhatsapp.onclick = () => {
+        if (pedido.length === 0) return alert('No hay nada en el pedido');
+        const mensaje = pedido.map(p => `- ${p.nombre}`).join('%0A');
+        const total = pedido.reduce((sum, p) => sum + p.precio, 0);
+        const texto = `Hola! Quiero pedir:%0A${mensaje}%0A%0ATotal: Gs. ${total.toLocaleString()}`;
+        window.open(`https://wa.me/+595986398701?text=${texto}`, '_blank');
+      };
 
       function actualizarPedido() {
         listaPedido.innerHTML = '';
         let total = 0;
-        pedido.forEach((p, index) => {
+        pedido.forEach(p => {
           const li = document.createElement('li');
-          li.textContent = `${p.nombre} (${p.tipo}) - Gs. ${p.precio.toLocaleString()}`;
+          li.textContent = `${p.nombre} - Gs. ${p.precio.toLocaleString()}`;
           listaPedido.appendChild(li);
           total += p.precio;
         });
         totalPedido.textContent = `Total: Gs. ${total.toLocaleString()}`;
-      }
-
-      btnWhatsapp.onclick = () => {
-        if (pedido.length === 0) return alert('No hay nada en el pedido');
-        const mensaje = pedido.map(p => `- ${p.nombre} (${p.tipo})`).join('%0A');
-        const total = pedido.reduce((sum, p) => sum + p.precio, 0);
-        const texto = `Hola! Quiero pedir:%0A${mensaje}%0A%0ATotal: Gs. ${total.toLocaleString()}`;
-        window.open(`https://wa.me/595986398701?text=${texto}`, '_blank');
       }
 
       try {
@@ -214,24 +229,28 @@
         productosGlobal = productos;
 
         const menu = document.getElementById('menu');
+        menu.innerHTML = '';
+
         Object.entries(productos).forEach(([nombre, info]) => {
           const card = document.createElement('div');
           card.className = 'product';
+
           card.innerHTML = `
             <img src="${info.imagen}" alt="${nombre}">
             <h3>${nombre}</h3>
             <p>Gs. ${info.precio.toLocaleString()}</p>
           `;
-          card.onclick = () => {
+
+          card.addEventListener('click', () => {
             modalTitulo.textContent = nombre;
-            modalIngredientes.textContent = `Ingredientes: ${info.ingredientes}`;
             modal.style.display = 'flex';
-          };
+          });
+
           menu.appendChild(card);
         });
-      } catch (err) {
-        document.getElementById('menu').innerHTML = '<p style="color:red;">Error cargando productos</p>';
-        console.error(err);
+      } catch (error) {
+        document.getElementById('menu').innerHTML = "<p style='color:red;'>No se pudo cargar el menú</p>";
+        console.error(error);
       }
     });
   </script>
