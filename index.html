@@ -1,4 +1,30 @@
 <!DOCTYPE html>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2 id="modal-titulo"></h2>
+      <p id="modal-ingredientes"></p>
+      <div class="modal-buttons">
+        <button id="btn-entera" class="entera">Agregar Entera</button>
+        <button id="btn-mitad" class="mitad">Agregar Mitad</button>
+        <button id="btn-cancelar" class="cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="pedido">
+    <h2>Mi Pedido</h2>
+    <ul id="lista-pedido"></ul>
+    <p id="total-pedido"></p>
+    <button id="enviar-whatsapp">Enviar pedido por WhatsApp</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const modal = document.getElementById('modal');
+      const modalTitulo = document.getElementById('modal-titulo');
+      const modalIngredientes = document.getElementById('modal-ingredientes');
+
       const btnEntera = document.getElementById('btn-entera');
       const btnMitad = document.getElementById('btn-mitad');
       const btnCancelar = document.getElementById('btn-cancelar');
@@ -71,11 +97,3 @@
 
           menu.appendChild(card);
         });
-      } catch (error) {
-        document.getElementById('menu').innerHTML = "<p style='color:red;'>No se pudo cargar el menú</p>";
-        console.error(error);
-      }
-    });
-  </script>
-</body>
-</html>
