@@ -8,12 +8,12 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #fefaf0;
-      text-align: center;
       margin: 0;
-      padding: 0;
+      padding-bottom: 180px;
     }
     header {
       margin-top: 20px;
+      text-align: center;
     }
     header img.logo {
       width: 120px;
@@ -62,7 +62,6 @@
       color: #444;
       font-weight: bold;
     }
-
     .modal {
       display: none;
       position: fixed;
@@ -93,16 +92,24 @@
     .cancelar { background-color: #ccc; color: black; }
 
     #pedido {
-      margin: 20px auto;
-      max-width: 500px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-top: 2px solid #ccc;
+      padding: 15px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
       text-align: left;
+      z-index: 1000;
     }
-    #pedido h2 { margin-bottom: 10px; }
-    #pedido ul { padding-left: 20px; }
+    #pedido h2 { margin: 0 0 10px; font-size: 18px; text-align: center; }
+    #lista-pedido {
+      max-height: 100px;
+      overflow-y: auto;
+      margin: 10px 0;
+      padding-left: 20px;
+    }
     #pedido button {
       background-color: green;
       color: white;
@@ -111,6 +118,10 @@
       border-radius: 5px;
       cursor: pointer;
       margin-top: 10px;
+      margin-right: 10px;
+    }
+    .btn-borrar {
+      background-color: crimson;
     }
   </style>
 </head>
@@ -118,7 +129,7 @@
   <header>
     <img src="logo.png" alt="Logo Alo Rico" class="logo" />
     <h1>Menú de Pizzas</h1>
-    <img src="Repartidor.png" alt="" class="icono" />
+    <img src="Repartidor.png" alt="Repartidor" class="icono" />
   </header>
 
   <div class="menu-container" id="menu"></div>
@@ -139,7 +150,8 @@
     <h2>Mi Pedido</h2>
     <ul id="lista-pedido"></ul>
     <p id="total-pedido"></p>
-    <button id="enviar-whatsapp">Enviar pedido por WhatsApp</button>
+    <button id="enviar-whatsapp">Enviar por WhatsApp</button>
+    <button id="borrar-pedido" class="btn-borrar">Borrar todo</button>
   </div>
 
   <script>
@@ -153,14 +165,18 @@
       const listaPedido = document.getElementById('lista-pedido');
       const totalPedido = document.getElementById('total-pedido');
       const btnWhatsapp = document.getElementById('enviar-whatsapp');
+      const btnBorrar = document.getElementById('borrar-pedido');
 
       let productosGlobal = {};
       let pedido = [];
 
       btnCancelar.onclick = () => modal.style.display = 'none';
-
       btnEntera.onclick = () => agregarAlPedido('entera');
       btnMitad.onclick = () => agregarAlPedido('mitad');
+      btnBorrar.onclick = () => {
+        pedido = [];
+        actualizarPedido();
+      };
 
       function agregarAlPedido(tipo) {
         const nombre = modalTitulo.textContent;
@@ -175,7 +191,7 @@
       function actualizarPedido() {
         listaPedido.innerHTML = '';
         let total = 0;
-        pedido.forEach(p => {
+        pedido.forEach((p, index) => {
           const li = document.createElement('li');
           li.textContent = `${p.nombre} (${p.tipo}) - Gs. ${p.precio.toLocaleString()}`;
           listaPedido.appendChild(li);
@@ -188,7 +204,7 @@
         if (pedido.length === 0) return alert('No hay nada en el pedido');
         const mensaje = pedido.map(p => `- ${p.nombre} (${p.tipo})`).join('%0A');
         const total = pedido.reduce((sum, p) => sum + p.precio, 0);
-        const texto = `Hola,estoy ingresando desde la plataforma de Pedidos:%0A${mensaje}%0A%0ATotal: Gs. ${total.toLocaleString()}`;
+        const texto = `Hola! Quiero pedir:%0A${mensaje}%0A%0ATotal: Gs. ${total.toLocaleString()}`;
         window.open(`https://wa.me/595986398701?text=${texto}`, '_blank');
       }
 
@@ -198,30 +214,24 @@
         productosGlobal = productos;
 
         const menu = document.getElementById('menu');
-        menu.innerHTML = '';
-
         Object.entries(productos).forEach(([nombre, info]) => {
           const card = document.createElement('div');
           card.className = 'product';
-
           card.innerHTML = `
             <img src="${info.imagen}" alt="${nombre}">
             <h3>${nombre}</h3>
             <p>Gs. ${info.precio.toLocaleString()}</p>
           `;
-
-          card.addEventListener('click', () => {
+          card.onclick = () => {
             modalTitulo.textContent = nombre;
             modalIngredientes.textContent = `Ingredientes: ${info.ingredientes}`;
             modal.style.display = 'flex';
-          });
-
+          };
           menu.appendChild(card);
         });
-
-      } catch (error) {
-        document.getElementById('menu').innerHTML = "<p style='color:red;'>No se pudo cargar el menú</p>";
-        console.error(error);
+      } catch (err) {
+        document.getElementById('menu').innerHTML = '<p style="color:red;">Error cargando productos</p>';
+        console.error(err);
       }
     });
   </script>
