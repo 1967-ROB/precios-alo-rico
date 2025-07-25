@@ -8,26 +8,22 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #fefaf0;
-      text-align: center;
       margin: 0;
       padding: 0;
     }
     header {
+      text-align: center;
       margin-top: 20px;
     }
     header img.logo {
       width: 120px;
-      height: auto;
     }
     header h1 {
       font-size: 28px;
       color: #c24a00;
-      margin: 10px 0 5px;
     }
     header img.icono {
       width: 60px;
-      height: auto;
-      margin-bottom: 10px;
     }
     .menu-container {
       display: flex;
@@ -43,6 +39,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       cursor: pointer;
       transition: transform 0.2s;
+      text-align: center;
     }
     .product:hover {
       transform: scale(1.03);
@@ -62,6 +59,39 @@
       color: #444;
       font-weight: bold;
     }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+    }
+    .modal-content button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn-entera { background-color: #4CAF50; color: white; }
+    .btn-mitad { background-color: #FFC107; color: black; }
+    .btn-cancelar { background-color: #f44336; color: white; }
   </style>
 </head>
 <body>
@@ -73,36 +103,65 @@
 
   <div class="menu-container" id="menu"></div>
 
+  <div class="modal" id="popup">
+    <div class="modal-content">
+      <h2 id="popup-nombre"></h2>
+      <p id="popup-ingredientes"></p>
+      <button class="btn-entera" onclick="agregarEntera()">Agregar Entera</button>
+      <button class="btn-mitad" onclick="agregarMitad()">Agregar Mitad</button>
+      <button class="btn-cancelar" onclick="cerrarPopup()">Cancelar</button>
+    </div>
+  </div>
+
   <script>
+    let pizzaSeleccionada = null;
+    let productos = {};
+
     async function cargarMenu() {
       try {
-      const res = await fetch("precios.json");
-        const productos = await res.json();
-
+        const res = await fetch("https://raw.githubusercontent.com/1967-ROB/Precios-alo-rico/main/precios.json");
+        productos = await res.json();
         const menu = document.getElementById('menu');
         menu.innerHTML = '';
 
         Object.entries(productos).forEach(([nombre, info]) => {
           const card = document.createElement('div');
           card.className = 'product';
-
           card.innerHTML = `
             <img src="${info.imagen}" alt="${nombre}">
             <h3>${nombre}</h3>
             <p>Gs. ${info.precio.toLocaleString()}</p>
           `;
-
-          card.addEventListener('click', () => {
-            alert(`${nombre}\n\nIngredientes:\n${info.ingredientes}`);
-          });
-
+          card.addEventListener('click', () => mostrarPopup(nombre, info));
           menu.appendChild(card);
         });
-
       } catch (error) {
         document.getElementById('menu').innerHTML = "<p style='color:red;'>No se pudo cargar el menú</p>";
         console.error(error);
       }
+    }
+
+    function mostrarPopup(nombre, info) {
+      pizzaSeleccionada = { nombre, info };
+      document.getElementById('popup-nombre').textContent = nombre;
+      document.getElementById('popup-ingredientes').textContent = info.ingredientes;
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function cerrarPopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    function agregarEntera() {
+      alert(`🍕 Pedido: 1 pizza entera de ${pizzaSeleccionada.nombre}`);
+      cerrarPopup();
+      // Lógica de agregar al carrito
+    }
+
+    function agregarMitad() {
+      alert(`🍕 Elegiste mitad de ${pizzaSeleccionada.nombre}. Elegí la otra mitad ahora.`);
+      cerrarPopup();
+      // Lógica futura de elegir segunda mitad
     }
 
     cargarMenu();
