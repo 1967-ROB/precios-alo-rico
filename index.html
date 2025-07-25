@@ -62,8 +62,6 @@
       color: #444;
       font-weight: bold;
     }
-
-    /* MODAL */
     .modal {
       display: none;
       position: fixed;
@@ -92,6 +90,26 @@
     .entera { background-color: #c24a00; color: white; }
     .mitad { background-color: #ff8c00; color: white; }
     .cancelar { background-color: #ccc; color: black; }
+    #pedido {
+      margin: 20px auto;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    #pedido h2 { margin-bottom: 10px; }
+    #pedido ul { padding-left: 20px; }
+    #pedido button {
+      background-color: green;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -103,7 +121,6 @@
 
   <div class="menu-container" id="menu"></div>
 
-  <!-- MODAL -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <h2 id="modal-titulo"></h2>
@@ -116,6 +133,13 @@
     </div>
   </div>
 
+  <div id="pedido">
+    <h2>Mi Pedido</h2>
+    <ul id="lista-pedido"></ul>
+    <p id="total-pedido"></p>
+    <button id="enviar-whatsapp">Enviar pedido por WhatsApp</button>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       const modal = document.getElementById('modal');
@@ -126,19 +150,52 @@
       const btnMitad = document.getElementById('btn-mitad');
       const btnCancelar = document.getElementById('btn-cancelar');
 
+      const listaPedido = document.getElementById('lista-pedido');
+      const totalPedido = document.getElementById('total-pedido');
+      const btnWhatsapp = document.getElementById('enviar-whatsapp');
+
+      let productosGlobal = {};
+      let pedido = [];
+
       btnCancelar.onclick = () => modal.style.display = 'none';
-      btnEntera.onclick = () => {
-        alert(`✅ Pizza entera agregada: ${modalTitulo.textContent}`);
+
+      btnEntera.onclick = () => agregarAlPedido('entera');
+      btnMitad.onclick = () => agregarAlPedido('mitad');
+
+      function agregarAlPedido(tipo) {
+        const nombre = modalTitulo.textContent;
+        const info = productosGlobal[nombre];
+        let precio = info.precio;
+        if (tipo === 'mitad') precio = Math.round(precio / 2);
+        pedido.push({ nombre, tipo, precio });
+        actualizarPedido();
         modal.style.display = 'none';
-      };
-      btnMitad.onclick = () => {
-        alert(`🧩 Mitad agregada: ${modalTitulo.textContent}`);
-        modal.style.display = 'none';
-      };
+      }
+
+      function actualizarPedido() {
+        listaPedido.innerHTML = '';
+        let total = 0;
+        pedido.forEach(p => {
+          const li = document.createElement('li');
+          li.textContent = `${p.nombre} (${p.tipo}) - Gs. ${p.precio.toLocaleString()}`;
+          listaPedido.appendChild(li);
+          total += p.precio;
+        });
+        totalPedido.textContent = `Total: Gs. ${total.toLocaleString()}`;
+      }
+
+      btnWhatsapp.onclick = () => {
+        if (pedido.length === 0) return alert('No hay nada en el pedido');
+        const mensaje = pedido.map(p => `- ${p.nombre} (${p.tipo})`).join('%0A');
+        const total = pedido.reduce((sum, p) => sum + p.precio, 0);
+        const texto = `Hola! Quiero pedir:%0A${mensaje}%0A%0ATotal: Gs. ${total.toLocaleString()}`;
+        window.open(`https://wa.me/595000000000?text=${texto}`, '_blank');
+      }
 
       try {
         const res = await fetch("https://raw.githubusercontent.com/1967-ROB/Precios-alo-rico/main/precios.json");
         const productos = await res.json();
+        productosGlobal = productos;
 
         const menu = document.getElementById('menu');
         menu.innerHTML = '';
@@ -161,7 +218,6 @@
 
           menu.appendChild(card);
         });
-
       } catch (error) {
         document.getElementById('menu').innerHTML = "<p style='color:red;'>No se pudo cargar el menú</p>";
         console.error(error);
