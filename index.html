@@ -188,7 +188,7 @@
         if (pedido.length === 0) return alert('No hay nada en el pedido');
         const mensaje = pedido.map(p => `- ${p.nombre} (${p.tipo})`).join('%0A');
         const total = pedido.reduce((sum, p) => sum + p.precio, 0);
-        const texto = `Hola! Quiero pedir:%0A${mensaje}%0A%0ATotal: Gs. ${total.toLocaleString()}`;
+        const texto = `Hola,estoy ingresando desde la plataforma de Pedidos:%0A${mensaje}%0A%0ATotal: Gs. ${total.toLocaleString()}`;
         window.open(`https://wa.me/595986398701?text=${texto}`, '_blank');
       }
 
