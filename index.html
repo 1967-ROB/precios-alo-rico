@@ -63,4 +63,100 @@
       font-weight: bold;
     }
 
-    /* MODAL *
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      text-align: center;
+    }
+    .modal-buttons button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .entera { background-color: #c24a00; color: white; }
+    .mitad { background-color: #ff8c00; color: white; }
+    .cancelar { background-color: #ccc; color: black; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Alo Rico" class="logo" />
+    <h1>Menú de Pizzas</h1>
+    <img src="Repartidor.png" alt="" class="icono" />
+  </header>
+
+  <div class="menu-container" id="menu"></div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2 id="modal-titulo"></h2>
+      <p id="modal-ingredientes"></p>
+      <div class="modal-buttons">
+        <button class="entera">Agregar Entera</button>
+        <button class="mitad">Agregar Mitad</button>
+        <button class="cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function cargarMenu() {
+      try {
+        const res = await fetch("https://raw.githubusercontent.com/1967-ROB/Precios-alo-rico/main/precios.json");
+        const productos = await res.json();
+
+        const menu = document.getElementById('menu');
+        menu.innerHTML = '';
+
+        const modal = document.getElementById('modal');
+        const modalTitulo = document.getElementById('modal-titulo');
+        const modalIngredientes = document.getElementById('modal-ingredientes');
+
+        document.querySelector('.cancelar').onclick = () => modal.style.display = 'none';
+
+        Object.entries(productos).forEach(([nombre, info]) => {
+          const card = document.createElement('div');
+          card.className = 'product';
+
+          card.innerHTML = `
+            <img src="${info.imagen}" alt="${nombre}">
+            <h3>${nombre}</h3>
+            <p>Gs. ${info.precio.toLocaleString()}</p>
+          `;
+
+          card.addEventListener('click', () => {
+            modalTitulo.textContent = nombre;
+            modalIngredientes.textContent = `Ingredientes: ${info.ingredientes}`;
+            modal.style.display = 'flex';
+          });
+
+          menu.appendChild(card);
+        });
+
+      } catch (error) {
+        document.getElementById('menu').innerHTML = "<p style='color:red;'>No se pudo cargar el menú</p>";
+        console.error(error);
+      }
+    }
+
+    cargarMenu();
+  </script>
+</body>
+</html>
