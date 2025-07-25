@@ -2,96 +2,96 @@
   "Alorico ité (carnes, verduras y panceta)": {
     "precio": 85000,
     "ingredientes": "Carnes mixtas, verduras salteadas, panceta crocante, muzzarella",
-    "imagen": "img-pizza/aloricoite.jpg"
+    "imagen": "img-pizza/aloricoite.jpeg"
   },
   "Mexicana (carne de lomito, cebolla, morrones, tomate y picante)": {
     "precio": 60000,
     "ingredientes": "Carne de lomito, cebolla, morrones, tomate, picante",
-    "imagen": "img-pizza/mexicana.jpg"
+    "imagen": "img-pizza/mexicana.jpeg"
   },
   "Alekei (pollo, katupiry, verduras)": {
     "precio": 54000,
     "ingredientes": "Pollo, katupiry, morrón, cebolla, tomate",
-    "imagen": "img-pizza/alekei.jpg"
+    "imagen": "img-pizza/alekei.jpeg"
   },
   "4 Quesos (muza, azul, katupiry y queso paraguay)": {
     "precio": 52000,
     "ingredientes": "Muzzarella, queso azul, katupiry, queso Paraguay",
-    "imagen": "img-pizza/4quesos.jpg"
+    "imagen": "img-pizza/4quesos.jpeg"
   },
   "Encantada (choclo, katupiry y papas fritas)": {
     "precio": 52000,
     "ingredientes": "Choclo, katupiry, papas fritas, muzzarella",
-    "imagen": "img-pizza/encantada.jpg"
+    "imagen": "img-pizza/encantada.jpeg"
   },
   "Choripizza (trozos de chorizo, cebolla, aceitunas)": {
     "precio": 50000,
     "ingredientes": "Chorizo, cebolla, aceitunas negras, muzzarella",
-    "imagen": "img-pizza/choripizza.jpg"
+    "imagen": "img-pizza/choripizza.jpeg"
   },
   "Panceta con queso Cheddar": {
     "precio": 48000,
     "ingredientes": "Panceta, queso cheddar, muzzarella",
-    "imagen": "img-pizza/pancetaconquesoCheddar.jpg"
+    "imagen": "img-pizza/pancetaconquesoCheddar.jpeg"
   },
   "Traviesa (morrones, choclo, tomates y panceta crocante)": {
     "precio": 48000,
     "ingredientes": "Morrones, choclo, tomates, panceta crocante, muzzarella",
-    "imagen": "img-pizza/traviesa.jpg"
+    "imagen": "img-pizza/traviesa.jpeg"
   },
   "Napolitana (tomates, parmesano, perejil con ajo)": {
     "precio": 45000,
     "ingredientes": "Muzzarella, tomate en rodajas, parmesano, ajo y perejil",
-    "imagen": "img-pizza/napolitana.jpg"
+    "imagen": "img-pizza/napolitana.jpeg"
   },
   "Panceta": {
     "precio": 45000,
     "ingredientes": "Panceta crocante, muzzarella, salsa de tomate",
-    "imagen": "img-pizza/panceta.jpg"
+    "imagen": "img-pizza/panceta.jpeg"
   },
   "Peperonni": {
     "precio": 45000,
     "ingredientes": "Peperonni, muzzarella, salsa de tomate",
-    "imagen": "img-pizza/pepperoni.jpg"
+    "imagen": "img-pizza/pepperoni.jpeg"
   },
   "Katupiry": {
     "precio": 44000,
     "ingredientes": "Katupiry, muzzarella, salsa de tomate",
-    "imagen": "img-pizza/katupiry.jpg"
+    "imagen": "img-pizza/katupiry.jpeg"
   },
   "Jamón": {
     "precio": 42000,
     "ingredientes": "Jamón, muzzarella, salsa de tomate",
-    "imagen": "img-pizza/jamón.jpg"
+    "imagen": "img-pizza/jamón.jpeg"
   },
   "Margarita (tomates y albahaca fresca)": {
     "precio": 42000,
     "ingredientes": "Muzzarella, tomate, albahaca fresca",
-    "imagen": "img-pizza/margarita.jpg"
+    "imagen": "img-pizza/margarita.jpeg"
   },
   "Pancho": {
     "precio": 42000,
     "ingredientes": "Salchicha, muzzarella, salsa de tomate",
-    "imagen": "img-pizza/pancho.jpg"
+    "imagen": "img-pizza/pancho.jpeg"
   },
   "Choclo": {
     "precio": 40000,
     "ingredientes": "Muzzarella, Choclo, salsa de tomate",
-    "imagen": "img-pizza/choclo.jpg"
+    "imagen": "img-pizza/choclo.jpeg"
   },
   "Vegetariana (morrones, cebolla, tomates y choclo)": {
     "precio": 40000,
     "ingredientes": "Morrones, cebolla, tomates, choclo, muzzarella",
-    "imagen": "img-pizza/vegetariana.jpg"
+    "imagen": "img-pizza/vegetariana.jpeg"
   },
   "Fugaza (cebolla caramelizada)": {
     "precio": 38000,
     "ingredientes": "Cebolla caramelizada, muzzarella, salsa de tomate",
-    "imagen": "img-pizza/fugaza.jpg"
+    "imagen": "img-pizza/fugaza.jpeg"
   },
   "Muzarella": {
     "precio": 35000,
     "ingredientes": "Muzzarella, salsa de tomate",
-    "imagen": "img-pizza/muzarella.jpg"
+    "imagen": "img-pizza/muzarella.jpeg"
   }
 }
